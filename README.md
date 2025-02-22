@@ -1,8 +1,6 @@
 # Daily-Leetcode-problem-solution11
 PROBLEM
 
-PROBLEM
-
 We run a preorder depth-first search (DFS) on the root of a binary tree. At each node in this traversal, we output D dashes (where D is the depth of this node), then we output the value of this node. If the depth of a node is D, the depth of its immediate child is D + 1. The depth of the root node is 0. If a node has only one child, that child is guaranteed to be the left child. Given the output traversal of this traversal, recover the tree and return its root.
 
 Intuition
@@ -22,7 +20,7 @@ If the current node has a depth greater than the top node in the stack, it is th
 
 6. At each step:
 
-7. We adjust the stack to ensure it contains only nodes relevant to the current depth. If necessary, we attach the node to the appropriate parent. 7. The root node remains at the bottom of the stack at the end.
+7. We adjust the stack to ensure it contains only nodes relevant to the current depth. If necessary, we attach the node to the appropriate parent. The root node remains at the bottom of the stack at the end.
 
 Complexity
 
