@@ -1,0 +1,50 @@
+class Solution {
+public:
+    TreeNode* recoverFromPreorder(string traversal) {
+        stack<TreeNode*> stk;
+        int i = 0, n = traversal.size();
+        
+        while (i < n) {
+            int depth = 0;
+            // Count dashes to determine depth
+            while (i < n && traversal[i] == '-') {
+                depth++;
+                i++;
+            }
+            
+            // Extract the node value
+            int value = 0;
+            while (i < n && isdigit(traversal[i])) {
+                value = value * 10 + (traversal[i] - '0');
+                i++;
+            }
+            
+            // Create the new node
+            TreeNode* node = new TreeNode(value);
+            
+            // Adjust stack to maintain proper parent-child relationships
+            while (stk.size() > depth) {
+                stk.pop();
+            }
+            
+            // Attach node to the correct parent
+            if (!stk.empty()) {
+                if (!stk.top()->left) {
+                    stk.top()->left = node;
+                } else {
+                    stk.top()->right = node;
+                }
+            }
+            
+            // Push the new node onto the stack
+            stk.push(node);
+        }
+        
+        // The root node is at the bottom of the stack
+        while (stk.size() > 1) {
+            stk.pop();
+        }
+        
+        return stk.top();
+    }
+};
